@@ -31,7 +31,7 @@ This project is a work in progress and will continue to evolve!
 <br/>
 <br/>
 
-Special thanks to Muhammet and Batuhan from the Kraken team.
+Special thanks to @mukireus and Batuhan from the Kraken team.
 
 
 
