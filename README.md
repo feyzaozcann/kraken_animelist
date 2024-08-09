@@ -1,3 +1,5 @@
+# Kraken AnimeList
+
 Hey there! Welcome to the Kraken AnimeList project. This is a Flutter app that fetches data from an external API and lists anime movies with their details.
 
 ### Project Structure 
