@@ -27,6 +27,12 @@ Anime Details: Access detailed information for each anime, including the title, 
 
 
 
-This project is a work in progress and will continue to evolve!
+This project is a work in progress and will continue to evolve! 
+<br/>
+<br/>
+
+Special thanks to Muhammet and Batuhan from the Kraken team.
+
+
 
 
