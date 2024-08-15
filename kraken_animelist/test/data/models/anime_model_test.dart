@@ -23,8 +23,6 @@ void main() {
     expect(testAnimeModel, isA<Anime>());
   });
 
-
-
   test('should return a valid model from json', () async {
     final List<dynamic> jsonList = json.decode(readJson('helpers/dummy_data/dummy_anime_response.json'));
 
@@ -42,7 +40,7 @@ void main() {
       "mal_id": 2,
       "title": "Adventure in the Mountains",
       "images": {
-        "jpg": {"image_url": "https://example.com/some-other-image.jpg"}
+        "jpg": {"image_url": "https://example.com/some-other-image.jpg"},
       },
       "score": 9.0,
       "synopsis":
@@ -50,9 +48,9 @@ void main() {
       "episodes": 24,
       "genres": [
         {"name": "Adventure"},
-        {"name": "Drama"}
+        {"name": "Drama"},
       ],
-      "characters": []
+      "characters": [],
     };
 
     expect(result, equals(expectedJsonMap));

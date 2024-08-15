@@ -1,30 +1,17 @@
-import 'package:anime_app/features/anime/presentation/pages/anime_details_page.dart';
 import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_anime_details.dart';
 import 'package:anime_app/features/anime/presentation/bloc/anime_detail_bloc/anime_detail_bloc.dart';
 import 'package:anime_app/features/anime/presentation/bloc/anime_detail_bloc/anime_detail_event.dart';
+import 'package:anime_app/features/anime/presentation/bloc/anime_list_bloc/anime_list_bloc.dart';
 import 'package:anime_app/features/anime/presentation/bloc/anime_list_bloc/anime_list_state.dart';
+import 'package:anime_app/features/anime/presentation/pages/anime_details_page.dart';
 import 'package:anime_app/features/anime/presentation/widgets/homepage_widget/anime_grid_view_widget.dart';
 import 'package:anime_app/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:anime_app/features/anime/presentation/bloc/anime_list_bloc/anime_list_bloc.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
-
-  void onTap(BuildContext context, Anime animeItem) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BlocProvider(
-          create: (context) =>
-              AnimeDetailsBloc(getIt<GetAnimeDetailsUseCase>())..add(GetAnimeDetailsEvent(animeId: animeItem.id)),
-          child: AnimeDetailsPage(anime: animeItem),
-        ),
-      ),
-    );
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +40,7 @@ class Homepage extends StatelessWidget {
                   child: AnimeGridView(
                     scrollController: scrollController,
                     animeList: animeList,
-                    onTap: (anime) => onTap(context, anime),
+                    onTap: (anime) async => onTap(context, anime),
                   ),
                 ),
                 if (state is AnimeListLoading && !state.isFirstFetch)
@@ -69,6 +56,19 @@ class Homepage extends StatelessWidget {
             return const Center(child: Text("Could not fetch data!"));
           }
         },
+      ),
+    );
+  }
+
+  Future<void> onTap(BuildContext context, Anime animeItem) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          create: (context) =>
+              AnimeDetailsBloc(getIt<GetAnimeDetailsUseCase>())..add(GetAnimeDetailsEvent(animeId: animeItem.id)),
+          child: AnimeDetailsPage(anime: animeItem),
+        ),
       ),
     );
   }

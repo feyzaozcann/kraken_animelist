@@ -51,7 +51,11 @@ class AnimeCharacters extends StatelessWidget {
           return Center(child: Text(state.message, style: const TextStyle(color: Colors.red)));
         } else {
           return const Center(
-              child: Text("No characters available.", style: TextStyle(color: Colors.black87)));
+            child: Text(
+              "No characters available.",
+              style: TextStyle(color: Colors.black87),
+            ),
+          );
         }
       },
     );

@@ -6,8 +6,6 @@ import 'package:injectable/injectable.dart';
 
 @Injectable()
 class AnimeDetailsBloc extends Bloc<AnimeDetailsEvent, AnimeDetailsState> {
-  final GetAnimeDetailsUseCase getAnimeDetails;
-
   AnimeDetailsBloc(this.getAnimeDetails) : super(AnimeDetailsInitial()) {
     on<GetAnimeDetailsEvent>((event, emit) async {
       emit(AnimeDetailsLoading());
@@ -20,4 +18,6 @@ class AnimeDetailsBloc extends Bloc<AnimeDetailsEvent, AnimeDetailsState> {
       );
     });
   }
+
+  final GetAnimeDetailsUseCase getAnimeDetails;
 }

@@ -2,13 +2,16 @@ import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:flutter/material.dart';
 
 class AnimeGridItem extends StatelessWidget {
-  final Anime anime;
+  const AnimeGridItem({
+    required this.anime,
+    super.key,
+  });
 
-  const AnimeGridItem({super.key, required this.anime});
+  final Anime anime;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [

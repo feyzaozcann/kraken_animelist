@@ -1,12 +1,12 @@
-import 'package:anime_app/features/anime/presentation/pages/anime_details_page.dart';
 import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:anime_app/features/anime/presentation/bloc/anime_detail_bloc/anime_detail_bloc.dart';
 import 'package:anime_app/features/anime/presentation/bloc/anime_detail_bloc/anime_detail_event.dart';
+import 'package:anime_app/features/anime/presentation/bloc/anime_list_bloc/anime_list_bloc.dart';
+import 'package:anime_app/features/anime/presentation/pages/anime_details_page.dart';
+import 'package:anime_app/features/anime/presentation/pages/home_page.dart';
 import 'package:anime_app/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:anime_app/features/anime/presentation/bloc/anime_list_bloc/anime_list_bloc.dart';
-import 'package:anime_app/features/anime/presentation/pages/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (_) => getIt<AnimeListBloc>()..add(const FetchAnimeList()),
-        child: const Homepage(),
+        child: const HomePage(),
       ),
       onGenerateRoute: (settings) {
         if (settings.name == '/animeDetails') {
@@ -39,13 +39,13 @@ class MyApp extends StatelessWidget {
             builder: (context) {
               return BlocProvider(
                 create: (context) => getIt<AnimeDetailsBloc>()..add(GetAnimeDetailsEvent(animeId: anime.id)),
-                child: AnimeDetailsPage(anime:anime,),
+                child: AnimeDetailsPage(anime: anime),
               );
             },
           );
         }
 
-        return null; 
+        return null;
       },
     );
   }
