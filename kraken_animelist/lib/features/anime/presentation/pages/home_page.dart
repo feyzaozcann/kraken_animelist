@@ -25,9 +25,8 @@ class HomePage extends StatelessWidget {
         elevation: 0,
       ),
       body: BlocBuilder<AnimeListBloc, AnimeListState>(
-        buildWhen: (previous, current) {
-          return current is AnimeListLoaded || current is AnimeListError || current is AnimeListLoading;
-        },
+        buildWhen: (previous, current) =>
+            current is AnimeListLoaded || current is AnimeListError || current is AnimeListLoading,
         builder: (context, state) {
           if (state is AnimeListLoading && state.isFirstFetch) {
             return const Center(child: CircularProgressIndicator());
@@ -40,7 +39,7 @@ class HomePage extends StatelessWidget {
                   child: AnimeGridView(
                     scrollController: scrollController,
                     animeList: animeList,
-                    onTap: (anime) async => onTap(context, anime),
+                    onAnimeTapped: (anime) async => onTap(context, anime),
                   ),
                 ),
                 if (state is AnimeListLoading && !state.isFirstFetch)

@@ -6,13 +6,13 @@ class AnimeGridView extends StatelessWidget {
   const AnimeGridView({
     required this.scrollController,
     required this.animeList,
-    required this.onTap,
+    required this.onAnimeTapped,
     super.key,
   });
 
   final ScrollController scrollController;
   final List<Anime> animeList;
-  final Function(Anime) onTap;
+  final void Function(Anime anime) onAnimeTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class AnimeGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         final anime = animeList[index];
         return InkWell(
-          onTap: () => onTap(anime),
+          onTap: () => onAnimeTapped(anime),
           child: AnimeGridItem(anime: anime),
         );
       },

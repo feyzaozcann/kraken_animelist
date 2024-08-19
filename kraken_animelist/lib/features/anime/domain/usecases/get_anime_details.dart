@@ -11,8 +11,6 @@ class GetAnimeDetailsUseCase {
   final AnimeRepository repository;
 
   Future<Either<Failure, AnimeDetails>> call(int animeId) async {
-    final result = await repository.getAnimeDetails(animeId);
-
-    return result;
+    return repository.getAnimeDetails(animeId);
   }
 }

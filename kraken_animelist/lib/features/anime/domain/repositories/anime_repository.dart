@@ -7,5 +7,3 @@ abstract class AnimeRepository {
   Future<Either<Failure, List<AnimeModel>>> getAnimeList(int page);
   Future<Either<Failure, AnimeDetails>> getAnimeDetails(int animeId);
 }
-
-class NoParams {}

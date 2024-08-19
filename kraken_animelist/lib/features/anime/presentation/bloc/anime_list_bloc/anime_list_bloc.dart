@@ -46,9 +46,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
 
       emit(AnimeListLoading(oldList, isFirstFetch: _currentPage == 1));
 
-      final failureOrAnime = await getAnimeListUseCase(_currentPage);
+      final getAnimeListResult = await getAnimeListUseCase(_currentPage);
 
-      failureOrAnime.fold(
+      getAnimeListResult.fold(
         (failure) => emit(const AnimeListError(message: 'Failed to load anime list')),
         (animeList) {
           if (animeList.isEmpty) {
