@@ -35,8 +35,11 @@ class AnimeCharacters extends StatelessWidget {
                       width: 50,
                       height: 50,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.broken_image, size: 50, color: Color.fromARGB(255, 255, 255, 255)),
+                      errorBuilder: (context, error, stackTrace) => const Icon(
+                        Icons.broken_image,
+                        size: 50,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                   title: Text(
@@ -51,7 +54,11 @@ class AnimeCharacters extends StatelessWidget {
           return Center(child: Text(state.message, style: const TextStyle(color: Colors.red)));
         } else {
           return const Center(
-              child: Text("No characters available.", style: TextStyle(color: Colors.black87)));
+            child: Text(
+              "No characters available.",
+              style: TextStyle(color: Colors.black87),
+            ),
+          );
         }
       },
     );

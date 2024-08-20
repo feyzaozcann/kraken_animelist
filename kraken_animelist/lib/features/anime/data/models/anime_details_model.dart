@@ -3,10 +3,7 @@ import 'package:anime_app/features/anime/domain/entities/anime_details.dart';
 import 'package:anime_app/features/anime/domain/entities/character.dart';
 
 class AnimeDetailsModel extends AnimeDetails {
-  const AnimeDetailsModel({
-
-    required super.character,
-  });
+  const AnimeDetailsModel({required super.character});
 
   factory AnimeDetailsModel.fromJson(Map<String, dynamic> json) {
     try {
@@ -22,9 +19,7 @@ class AnimeDetailsModel extends AnimeDetails {
           }).toList() ??
           [];
 
-      return AnimeDetailsModel(
-        character: characters,
-      );
+      return AnimeDetailsModel(character: characters);
     } catch (error) {
       throw ServerFailure();
     }
@@ -32,16 +27,17 @@ class AnimeDetailsModel extends AnimeDetails {
 
   Map<String, dynamic> toJson() {
     return {
-  
       'characters': character
-          .map((character) => {
-                'name': character.name,
-                'images': {
-                  'jpg': {
-                    'image_url': character.imageUrl,
-                  },
+          .map(
+            (character) => {
+              'name': character.name,
+              'images': {
+                'jpg': {
+                  'image_url': character.imageUrl,
                 },
-              })
+              },
+            },
+          )
           .toList(),
     };
   }
