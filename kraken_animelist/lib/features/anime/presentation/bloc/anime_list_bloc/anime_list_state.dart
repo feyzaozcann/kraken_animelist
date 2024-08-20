@@ -1,5 +1,5 @@
-import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:equatable/equatable.dart';
+import 'package:anime_app/features/anime/domain/entities/anime.dart';
 
 abstract class AnimeListState extends Equatable {
   const AnimeListState();
@@ -11,41 +11,34 @@ abstract class AnimeListState extends Equatable {
 class AnimeListInitial extends AnimeListState {}
 
 class AnimeListLoading extends AnimeListState {
-  const AnimeListLoading(
-    this.oldList, {
-    this.isFirstFetch = false,
-  });
-
   final List<Anime> oldList;
   final bool isFirstFetch;
+
+  const AnimeListLoading(this.oldList, {this.isFirstFetch=false});
 
   @override
   List<Object> get props => [oldList];
 }
 
 class AnimeListLoaded extends AnimeListState {
+  final List<Anime> animeList;
+  final int currentPage;
+  final bool hasReachedMax;
+
   const AnimeListLoaded({
     required this.animeList,
     required this.currentPage,
     required this.hasReachedMax,
   });
 
-  final List<Anime> animeList;
-  final int currentPage;
-  final bool hasReachedMax;
-
   @override
-  List<Object> get props => [
-        animeList,
-        currentPage,
-        hasReachedMax,
-      ];
+  List<Object> get props => [animeList, currentPage, hasReachedMax];
 }
 
 class AnimeListError extends AnimeListState {
-  const AnimeListError({required this.message});
-
   final String message;
+
+  const AnimeListError({required this.message});
 
   @override
   List<Object> get props => [message];

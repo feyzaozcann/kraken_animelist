@@ -19,10 +19,8 @@ void main() {
 
   const testAnimeDetail = AnimeDetailsModel(
     character: [
-      Character(
-        name: 'Sakura Haruno',
-        imageUrl: 'https://example.com/sakura.jpg',
-      ),
+      Character(name: 'Sakura Haruno',
+    imageUrl: 'https://example.com/sakura.jpg'),
     ],
   );
 

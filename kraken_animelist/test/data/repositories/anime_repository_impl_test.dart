@@ -1,6 +1,6 @@
-import 'package:anime_app/core/error/failures.dart';
 import 'package:anime_app/features/anime/data/models/anime_model.dart';
 import 'package:anime_app/features/anime/data/repositories/anime_repository_impl.dart';
+import 'package:anime_app/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -33,16 +33,19 @@ void main() {
   group('getAnimeList', () {
     const testPage = 1;
 
-    test('should return list of anime models when the call is successful', () async {
-      when(mockAnimeRemoteDataSource.getAnimeList(testPage)).thenAnswer((_) async => [testAnimeModel]);
+test('should return list of anime models when the call is successful', () async {
 
-      final result = await animeRepositoryImpl.getAnimeList(testPage);
+  when(mockAnimeRemoteDataSource.getAnimeList(testPage))
+      .thenAnswer((_) async => [testAnimeModel]);
 
-      verify(mockAnimeRemoteDataSource.getAnimeList(testPage));
-      expect(result.toString(), const Right<Failure, List<AnimeModel>>([testAnimeModel]).toString());
-    });
+  final result = await animeRepositoryImpl.getAnimeList(testPage);
+
+  verify(mockAnimeRemoteDataSource.getAnimeList(testPage));
+  expect(result.toString(), const Right<Failure, List<AnimeModel>>([testAnimeModel]).toString());
+});
 
     test('should return server failure when the call is unsuccessful', () async {
+    
       when(mockAnimeRemoteDataSource.getAnimeList(testPage)).thenThrow(Exception());
 
       final result = await animeRepositoryImpl.getAnimeList(testPage);

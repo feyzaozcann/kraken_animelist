@@ -1,16 +1,20 @@
+
+import 'package:dartz/dartz.dart';
 import 'package:anime_app/core/error/failures.dart';
+
 import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:anime_app/features/anime/domain/repositories/anime_repository.dart';
-import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable()
-class GetAnimeListUseCase {
-  const GetAnimeListUseCase(this.repository);
 
+@Injectable()
+
+class GetAnimeListUseCase {
   final AnimeRepository repository;
 
+  GetAnimeListUseCase(this.repository);
+
   Future<Either<Failure, List<Anime>>> call(int page) async {
-    return repository.getAnimeList(page);
+    return await repository.getAnimeList(page);
   }
 }

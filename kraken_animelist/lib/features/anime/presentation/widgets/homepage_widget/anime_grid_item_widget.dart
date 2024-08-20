@@ -2,16 +2,13 @@ import 'package:anime_app/features/anime/domain/entities/anime.dart';
 import 'package:flutter/material.dart';
 
 class AnimeGridItem extends StatelessWidget {
-  const AnimeGridItem({
-    required this.anime,
-    super.key,
-  });
-
   final Anime anime;
+
+  const AnimeGridItem({super.key, required this.anime});
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
+    return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
@@ -40,24 +37,25 @@ class AnimeGridItem extends StatelessWidget {
             bottom: 0,
             left: 0,
             right: 0,
-            child: DecoratedBox(
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
               decoration: const BoxDecoration(
                 color: Colors.black54,
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  anime.title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
                 ),
+              ),
+              child: Text(
+                anime.title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),

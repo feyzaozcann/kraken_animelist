@@ -1,16 +1,16 @@
-import 'package:anime_app/core/error/failures.dart';
-import 'package:anime_app/features/anime/data/datasources/anime_remote_data_source.dart';
 import 'package:anime_app/features/anime/data/models/anime_model.dart';
 import 'package:anime_app/features/anime/domain/entities/anime_details.dart';
-import 'package:anime_app/features/anime/domain/repositories/anime_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:anime_app/core/error/failures.dart';
+import 'package:anime_app/features/anime/domain/repositories/anime_repository.dart';
+import 'package:anime_app/features/anime/data/datasources/anime_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: AnimeRepository)
 class AnimeRepositoryImpl implements AnimeRepository {
-  const AnimeRepositoryImpl(this.remoteDataSource);
-
   final AnimeRemoteDataSource remoteDataSource;
+
+  AnimeRepositoryImpl(this.remoteDataSource);
 
   @override
   Future<Either<Failure, List<AnimeModel>>> getAnimeList(int page) async {

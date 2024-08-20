@@ -4,17 +4,14 @@ import 'package:anime_app/features/anime/presentation/widgets/anime_detail_widge
 import 'package:flutter/material.dart';
 
 class AnimeDetailsPage extends StatelessWidget {
-  const AnimeDetailsPage({
-    required this.anime,
-    super.key,
-  });
-
   final Anime anime;
+
+  const AnimeDetailsPage({super.key, required this.anime});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white, 
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -46,3 +43,5 @@ class AnimeDetailsPage extends StatelessWidget {
     );
   }
 }
+
+

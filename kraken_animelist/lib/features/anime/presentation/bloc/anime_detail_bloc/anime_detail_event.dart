@@ -8,9 +8,9 @@ abstract class AnimeDetailsEvent extends Equatable {
 }
 
 class GetAnimeDetailsEvent extends AnimeDetailsEvent {
-  const GetAnimeDetailsEvent({required this.animeId});
-
   final int animeId;
+
+  const GetAnimeDetailsEvent({required this.animeId});
 
   @override
   List<Object?> get props => [animeId];

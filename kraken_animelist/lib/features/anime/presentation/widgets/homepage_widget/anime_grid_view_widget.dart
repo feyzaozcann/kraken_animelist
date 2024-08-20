@@ -3,16 +3,15 @@ import 'package:anime_app/features/anime/presentation/widgets/homepage_widget/an
 import 'package:flutter/material.dart';
 
 class AnimeGridView extends StatelessWidget {
-  const AnimeGridView({
-    required this.scrollController,
-    required this.animeList,
-    required this.onAnimeTapped,
-    super.key,
-  });
-
   final ScrollController scrollController;
   final List<Anime> animeList;
-  final void Function(Anime anime) onAnimeTapped;
+  final Function(Anime) onTap;
+
+  const AnimeGridView({super.key, 
+    required this.scrollController,
+    required this.animeList,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +28,11 @@ class AnimeGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         final anime = animeList[index];
         return InkWell(
-          onTap: () => onAnimeTapped(anime),
+          onTap: () => onTap(anime),
           child: AnimeGridItem(anime: anime),
         );
       },
     );
   }
 }
+
